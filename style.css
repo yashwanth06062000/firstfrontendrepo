@@ -1,0 +1,52 @@
+.formbox{
+    width: 330px;
+    height: 320px;
+    background-color: dimgray;
+    margin-left: 10px;
+    margin-top: 100px;
+}
+.innerform{
+
+    font-family: cursive;
+    background-color: lightslategrey;
+    width: 270px;
+    height: 270px;
+    align-self: center;
+    margin-top: -15px;
+    margin-left: 35px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+body{
+    background-color:white;
+}
+.but{
+    font-family:cursive;
+    width:250px;
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight:bolder;
+    background-color:black;
+    color:white;
+
+}
+.it{
+    padding: 5px;
+    background: #f4f4f4;
+    margin-top: 10px;
+    margin-left: 0px;
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0px;
+  }
+  .ibtn{
+      background-color: red;
+      float: right;
+  }
+  .pt{
+    display: inline-block;
+      margin: 0px;
+      float: bottom;
+  }

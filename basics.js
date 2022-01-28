@@ -61,12 +61,18 @@ let value=document.getElementById('Addingitems')
 btn.addEventListener('click',addito)
 function addito(e){
     e.preventDefault();
-    let value=document.getElementById('Addingitems').value;
+    let value2=document.getElementById('AddingItems').value;
+    let value1=document.getElementById('discription').value;
+    
+    let pil=document.createElement('p')
+    pil.className='pt';
+    pil.append(document.createTextNode(value1))
     let rp=document.createElement('li')
     rp.className='it'
     rp.id='ibtnc'
-    let ttt=document.createTextNode(value)
+    let ttt=document.createTextNode(value2)
     rp.append(ttt)
+    rp.append(pil);
     let bty=document.createElement('button')
     bty.append(document.createTextNode('x'))
     bty.className='ibtn';
@@ -85,6 +91,53 @@ function remo(e){
             rem.removeChild(li);
           }
     }
+}
+let search=document.getElementById('searchitems')
+let searchdis=document.getElementById('searchdiscription')
+
+search.addEventListener('keyup',ser)
+searchdis.addEventListener('keyup',ser1)
+let flag=[];
+
+function ser(e){
+    
+    let tex=e.target.value.toLowerCase();
+    let r=rem.children;
+    Array.from(r).forEach(function(iu){
+        let rrr=iu.firstChild.textContent.toLowerCase();
+        if(rrr.indexOf(tex)!=-1){
+            flag.push(iu)
+            iu.style.display='block';
+            
+        }
+        else{
+            iu.style.display='none';
+
+        }
+    })
+}
+function ser1(e){
+    console.log("2")
+    let tex=e.target.value.toLowerCase();
+    let r=rem.children;
+    Array.from(r).forEach(function(iu){
+        
+        let rrr=iu.querySelector('.pt').textContent.toLowerCase();
+        if(rrr.indexOf(tex)!=-1){
+            let flag1=0;
+            for(let i=0;i<flag.length;i++){
+                if(flag[i]==iu){
+                    flag1=1;
+                }
+            }
+            if(flag1==1){
+            iu.style.display='block';}
+        }
+        else{
+            iu.style.display='none';
+        }
+    })
+    
 }
 
 
