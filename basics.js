@@ -44,18 +44,47 @@
 // console.log(play.nextElementSibling)
 // console.log(play.previousSibling)
 // console.log(play.previousElementSibling)
-let newDiv=document.createElement('div')
-newDiv.setAttribute('title','newdiv')
-newDiv.className='created';
-newDiv.id='createdid';
-newtextnode=document.createTextNode('Hello Dude1')
-newDiv.appendChild(newtextnode);
-let tt=document.querySelector('.formbox')
-console.log(tt)
-let ff=document.querySelector('.innerform')
-console.log(tt)
-tt.insertBefore(newDiv,ff)
-console.log(newDiv);
+// let newDiv=document.createElement('div')
+// newDiv.setAttribute('title','newdiv')
+// newDiv.className='created';
+// newDiv.id='createdid';
+// newtextnode=document.createTextNode('Hello Dude1')
+// newDiv.appendChild(newtextnode);
+// let tt=document.querySelector('.formbox')
+// console.log(tt)
+// let ff=document.querySelector('.innerform')
+// console.log(tt)
+// tt.insertBefore(newDiv,ff)
+// console.log(newDiv);
+let btn=document.querySelector('.but')
+let value=document.getElementById('Addingitems')
+btn.addEventListener('click',addito)
+function addito(e){
+    e.preventDefault();
+    let value=document.getElementById('Addingitems').value;
+    let rp=document.createElement('li')
+    rp.className='it'
+    rp.id='ibtnc'
+    let ttt=document.createTextNode(value)
+    rp.append(ttt)
+    let bty=document.createElement('button')
+    bty.append(document.createTextNode('x'))
+    bty.className='ibtn';
+    rp.append(bty)
+    let ull=document.querySelector('.items')
+    ull.appendChild(rp);
+}
+//removing the added item in list
+let rem=document.querySelector('.items')
 
+rem.addEventListener('click',remo)
+function remo(e){
+    if(e.target.className=='ibtn'){
+        if(confirm('Are You Sure?')){
+            var li = e.target.parentElement;
+            rem.removeChild(li);
+          }
+    }
+}
 
 
