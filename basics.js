@@ -12,9 +12,20 @@
 // {
 //     ite[i].style.backgroundColor='#f4f4f4';
 // }
-let iy=document.getElementsByTagName('li')
-for(let i =0;i<iy.length;i++)
-{
-    iy[i].style.backgroundColor='#f4f4f4';
+// let iy=document.getElementsByTagName('li')
+// for(let i =0;i<iy.length;i++)
+// {
+//     iy[i].style.backgroundColor='#f4f4f4';
+// }
+// let seconditem=document.querySelector('li:nth-child(2)');
+// seconditem.style.backgroundColor='green';
+// let thirditem=document.querySelector('li:nth-child(3)');
+// thirditem.style.display='none';
+let items=document.querySelectorAll('.it');
+items[1].style.color='green';
+let odd=document.querySelectorAll('li:nth-child(odd)');
+console.log(odd)
+for(let i=0;i<odd.length;i++){
+    odd[i].style.backgroundColor='green';
 }
 
