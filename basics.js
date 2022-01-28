@@ -6,9 +6,15 @@
 // let h=document.getElementById('book')
 // h.style.borderBottom='3px solid black';
 // h.style.color='green';
-let ite=document.getElementsByClassName('it');
-ite[2].style.backgroundColor='green';
-for(let i =0;i<ite.length;i++)
+// let ite=document.getElementsByClassName('it');
+// ite[2].style.backgroundColor='green';
+// for(let i =0;i<ite.length;i++)
+// {
+//     ite[i].style.backgroundColor='#f4f4f4';
+// }
+let iy=document.getElementsByTagName('li')
+for(let i =0;i<iy.length;i++)
 {
-    ite[i].style.backgroundColor='#f4f4f4';
+    iy[i].style.backgroundColor='#f4f4f4';
 }
+
