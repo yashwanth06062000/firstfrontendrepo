@@ -140,18 +140,25 @@
 //     })
     
 // }
+let mydeserilizeobj=JSON.parse(localStorage.getItem('myobj'))
+document.getElementById('name').value=mydeserilizeobj.name1;
+document.getElementById('email').value=mydeserilizeobj.email;
+document.getElementById('phone').value=mydeserilizeobj.phone;
+document.getElementById('timeforcall').value=mydeserilizeobj.timeforcall;
+
+
 
 let func=document.getElementById('but')
 func.addEventListener('click',call);
 function call(e){
 e.preventDefault();
-let name1=document.getElementById('name').value;
-let email=document.getElementById('email').value;
-let phone=document.getElementById('phone').value;
-let date=document.getElementById('timeforcall').value;
-localStorage.setItem('name',name1);
-localStorage.setItem('email',email);
-localStorage.setItem('phone',phone);
-localStorage.setItem('date',date);
 
+let myobj={
+     name1:document.getElementById('name').value,
+    email:document.getElementById('email').value,
+    phone:document.getElementById('phone').value,
+    date:document.getElementById('timeforcall').value
+};
+let myserializedobj=JSON.stringify(myobj);
+localStorage.setItem('myobj',myserializedobj)
 }
