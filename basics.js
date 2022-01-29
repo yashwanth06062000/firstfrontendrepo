@@ -56,31 +56,59 @@
 // console.log(tt)
 // tt.insertBefore(newDiv,ff)
 // console.log(newDiv);
-// let btn=document.querySelector('.but')
-// let value=document.getElementById('Addingitems')
-// btn.addEventListener('click',addito)
-// function addito(e){
-//     e.preventDefault();
-//     let value2=document.getElementById('AddingItems').value;
-//     let value1=document.getElementById('discription').value;
+let btn=document.querySelector('.but')
+let value=document.getElementById('Addingitems')
+let counte=0;
+btn.addEventListener('click',addito)
+function addito(e){
+    e.preventDefault();
+    let value2=document.getElementById('AddingItems').value;
+    let value1=document.getElementById('discription').value;
+    let obj={
+        name:value2,
+        email:value1};
+    let mesil=JSON.stringify(obj);
+    localStorage.setItem(`Userdetails${value1}`,mesil)  
+    count++; 
     
-//     let pil=document.createElement('p')
-//     pil.className='pt';
-//     pil.append(document.createTextNode(value1))
-//     let rp=document.createElement('li')
-//     rp.className='it'
-//     rp.id='ibtnc'
-//     let ttt=document.createTextNode(value2)
-//     rp.append(ttt)
-//     rp.append(pil);
-//     let bty=document.createElement('button')
-//     bty.append(document.createTextNode('x'))
-//     bty.className='ibtn';
-//     rp.append(bty)
-//     let ull=document.querySelector('.items')
-//     ull.appendChild(rp);
-// }
-// //removing the added item in list
+    // let pil=document.createElement('p')
+    // pil.className='pt';
+    // pil.append(document.createTextNode(value1))
+    // let rp=document.createElement('li')
+    // rp.className='it'
+    // rp.id='ibtnc'
+    // let ttt=document.createTextNode(value2)
+    // rp.append(ttt)
+    // rp.append(pil);
+    // let bty=document.createElement('button')
+    // bty.append(document.createTextNode('x'))
+    // bty.className='ibtn';
+    // rp.append(bty)
+    // let ull=document.querySelector('.items')
+    // ull.appendChild(rp);
+}
+document.addEventListener('DOMContentLoaded',call);
+function call(e){
+for( let k in localStorage){
+    let nam=JSON.parse(localStorage.getItem(k)).name;
+    let em=JSON.parse(localStorage.getItem(k)).email;
+    let rp=document.createElement('li')
+    rp.className='it'
+    rp.id='ibtnc'
+    let ttt=document.createTextNode(nam)
+    let ttt1=document.createTextNode(em)
+    rp.append(ttt)
+    rp.append(ttt1)
+    let bty=document.createElement('button')
+    bty.append(document.createTextNode('x'))
+    bty.className='ibtn';
+    rp.append(bty)
+    let ull=document.querySelector('.items')
+    ull.appendChild(rp);
+}
+}
+
+//removing the added item in list
 // let rem=document.querySelector('.items')
 
 // rem.addEventListener('click',remo)
@@ -140,25 +168,25 @@
 //     })
     
 // }
-let mydeserilizeobj=JSON.parse(localStorage.getItem('myobj'))
-document.getElementById('name').value=mydeserilizeobj.name1;
-document.getElementById('email').value=mydeserilizeobj.email;
-document.getElementById('phone').value=mydeserilizeobj.phone;
-document.getElementById('timeforcall').value=mydeserilizeobj.timeforcall;
+// let mydeserilizeobj=JSON.parse(localStorage.getItem('myobj'))
+// document.getElementById('name').value=mydeserilizeobj.name1;
+// document.getElementById('email').value=mydeserilizeobj.email;
+// document.getElementById('phone').value=mydeserilizeobj.phone;
+// document.getElementById('timeforcall').value=mydeserilizeobj.timeforcall;
 
 
 
-let func=document.getElementById('but')
-func.addEventListener('click',call);
-function call(e){
-e.preventDefault();
+// let func=document.getElementById('but')
+// func.addEventListener('click',call);
+// function call(e){
+// e.preventDefault();
 
-let myobj={
-     name1:document.getElementById('name').value,
-    email:document.getElementById('email').value,
-    phone:document.getElementById('phone').value,
-    date:document.getElementById('timeforcall').value
-};
-let myserializedobj=JSON.stringify(myobj);
-localStorage.setItem('myobj',myserializedobj)
-}
+// let myobj={
+//      name1:document.getElementById('name').value,
+//     email:document.getElementById('email').value,
+//     phone:document.getElementById('phone').value,
+//     date:document.getElementById('timeforcall').value
+// };
+// let myserializedobj=JSON.stringify(myobj);
+// localStorage.setItem('myobj',myserializedobj)
+// }
