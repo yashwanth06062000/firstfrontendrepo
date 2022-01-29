@@ -59,17 +59,31 @@
 let btn=document.querySelector('.but')
 let value=document.getElementById('Addingitems')
 let counte=0;
+let ramu=document.querySelector('.items');
 btn.addEventListener('click',addito)
 function addito(e){
     e.preventDefault();
     let value2=document.getElementById('AddingItems').value;
     let value1=document.getElementById('discription').value;
+    let falg=0;
+     if(localStorage.getItem(`Userdetails${value1}`)!=-1){
+        let c=document.querySelectorAll('.it')
+        for(let i=0;i<c.length;i++){
+            let tex=c[i].firstChild.nextSibling.textContent;
+            console.log(tex,"this",value1)
+            if(tex==value1){
+                
+                ramu.removeChild(c[i]);
+            }
+        }
+     }    
+        
+
     let obj={
         name:value2,
         email:value1};
     let mesil=JSON.stringify(obj);
-    localStorage.setItem(`Userdetails${value1}`,mesil)  
-    count++; 
+    localStorage.setItem(`Userdetails${value1}`,mesil)   
     
     // let pil=document.createElement('p')
     // pil.className='pt';
@@ -86,6 +100,25 @@ function addito(e){
     // rp.append(bty)
     // let ull=document.querySelector('.items')
     // ull.appendChild(rp);
+}
+let remote=document.querySelector('.items')
+
+
+remote.addEventListener('click',remo1)
+function remo1(e){
+    if(e.target.className=='ibtn'){
+        if(confirm('Are You Sure?')){
+            let dele=e.target.parentElement.firstChild.nextSibling.textContent
+                console.log(`Userdetails${dele}`)
+                if(localStorage.getItem(`Userdetails${dele}`)){
+                    console.log("hie")
+                    localStorage.removeItem(`Userdetails${dele}`)
+                }
+            
+            var li = e.target.parentElement;
+            remote.removeChild(li);
+          }
+    }
 }
 document.addEventListener('DOMContentLoaded',call);
 function call(e){
@@ -108,18 +141,12 @@ for( let k in localStorage){
 }
 }
 
-//removing the added item in list
-// let rem=document.querySelector('.items')
 
-// rem.addEventListener('click',remo)
-// function remo(e){
-//     if(e.target.className=='ibtn'){
-//         if(confirm('Are You Sure?')){
-//             var li = e.target.parentElement;
-//             rem.removeChild(li);
-//           }
-//     }
-// }
+
+
+
+//removing the added item in list
+
 // let search=document.getElementById('searchitems')
 // let searchdis=document.getElementById('searchdiscription')
 
