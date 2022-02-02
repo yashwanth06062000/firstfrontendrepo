@@ -56,34 +56,34 @@
 // console.log(tt)
 // tt.insertBefore(newDiv,ff)
 // console.log(newDiv);
-let btn=document.querySelector('.but')
-let value=document.getElementById('Addingitems')
-let counte=0;
-let ramu=document.querySelector('.items');
-btn.addEventListener('click',addito)
-function addito(e){
-    e.preventDefault();
-    let value2=document.getElementById('AddingItems').value;
-    let value1=document.getElementById('discription').value;
-    let falg=0;
-     if(localStorage.getItem(`Userdetails${value1}`)!=-1){
-        let c=document.querySelectorAll('.it')
-        for(let i=0;i<c.length;i++){
-            let tex=c[i].firstChild.nextSibling.textContent;
-            console.log(tex,"this",value1)
-            if(tex==value1){
+// let btn=document.querySelector('.but')
+// let value=document.getElementById('Addingitems')
+// let counte=0;
+// let ramu=document.querySelector('.items');
+// btn.addEventListener('click',addito)
+// function addito(e){
+//     e.preventDefault();
+//     let value2=document.getElementById('AddingItems').value;
+//     let value1=document.getElementById('discription').value;
+//     let falg=0;
+//      if(localStorage.getItem(`Userdetails${value1}`)!=-1){
+//         let c=document.querySelectorAll('.it')
+//         for(let i=0;i<c.length;i++){
+//             let tex=c[i].firstChild.nextSibling.textContent;
+//             console.log(tex,"this",value1)
+//             if(tex==value1){
                 
-                ramu.removeChild(c[i]);
-            }
-        }
-     }    
+//                 ramu.removeChild(c[i]);
+//             }
+//         }
+//      }    
         
 
-    let obj={
-        name:value2,
-        email:value1};
-    let mesil=JSON.stringify(obj);
-    localStorage.setItem(`Userdetails${value1}`,mesil)   
+//     let obj={
+//         name:value2,
+//         email:value1};
+//     let mesil=JSON.stringify(obj);
+//     localStorage.setItem(`Userdetails${value1}`,mesil)   
     
     // let pil=document.createElement('p')
     // pil.className='pt';
@@ -100,46 +100,46 @@ function addito(e){
     // rp.append(bty)
     // let ull=document.querySelector('.items')
     // ull.appendChild(rp);
-}
-let remote=document.querySelector('.items')
+// }
+// let remote=document.querySelector('.items')
 
 
-remote.addEventListener('click',remo1)
-function remo1(e){
-    if(e.target.className=='ibtn'){
-        if(confirm('Are You Sure?')){
-            let dele=e.target.parentElement.firstChild.nextSibling.textContent
-                console.log(`Userdetails${dele}`)
-                if(localStorage.getItem(`Userdetails${dele}`)){
-                    console.log("hie")
-                    localStorage.removeItem(`Userdetails${dele}`)
-                }
+// remote.addEventListener('click',remo1)
+// function remo1(e){
+//     if(e.target.className=='ibtn'){
+//         if(confirm('Are You Sure?')){
+//             let dele=e.target.parentElement.firstChild.nextSibling.textContent
+//                 console.log(`Userdetails${dele}`)
+//                 if(localStorage.getItem(`Userdetails${dele}`)){
+//                     console.log("hie")
+//                     localStorage.removeItem(`Userdetails${dele}`)
+//                 }
             
-            var li = e.target.parentElement;
-            remote.removeChild(li);
-          }
-    }
-}
-document.addEventListener('DOMContentLoaded',call);
-function call(e){
-for( let k in localStorage){
-    let nam=JSON.parse(localStorage.getItem(k)).name;
-    let em=JSON.parse(localStorage.getItem(k)).email;
-    let rp=document.createElement('li')
-    rp.className='it'
-    rp.id='ibtnc'
-    let ttt=document.createTextNode(nam)
-    let ttt1=document.createTextNode(em)
-    rp.append(ttt)
-    rp.append(ttt1)
-    let bty=document.createElement('button')
-    bty.append(document.createTextNode('x'))
-    bty.className='ibtn';
-    rp.append(bty)
-    let ull=document.querySelector('.items')
-    ull.appendChild(rp);
-}
-}
+//             var li = e.target.parentElement;
+//             remote.removeChild(li);
+//           }
+//     }
+// }
+// document.addEventListener('DOMContentLoaded',call);
+// function call(e){
+// for( let k in localStorage){
+//     let nam=JSON.parse(localStorage.getItem(k)).name;
+//     let em=JSON.parse(localStorage.getItem(k)).email;
+//     let rp=document.createElement('li')
+//     rp.className='it'
+//     rp.id='ibtnc'
+//     let ttt=document.createTextNode(nam)
+//     let ttt1=document.createTextNode(em)
+//     rp.append(ttt)
+//     rp.append(ttt1)
+//     let bty=document.createElement('button')
+//     bty.append(document.createTextNode('x'))
+//     bty.className='ibtn';
+//     rp.append(bty)
+//     let ull=document.querySelector('.items')
+//     ull.appendChild(rp);
+// }
+// }
 
 
 
@@ -217,3 +217,17 @@ for( let k in localStorage){
 // let myserializedobj=JSON.stringify(myobj);
 // localStorage.setItem('myobj',myserializedobj)
 // }
+var student={
+    age:20
+}
+var arr=[10,30]
+var f1=function printing(){
+    console.log(this.age)
+}
+f1.call(student)
+var f=function printing(a,b){
+    console.log(a,this.age,b)
+}
+f.apply(student,arr)
+var bound=f1.bind(student)
+bound()
