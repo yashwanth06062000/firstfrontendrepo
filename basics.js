@@ -232,18 +232,68 @@
 // var bound=f1.bind(student)
 // bound()
 // ------------- doing function currying using closures and bing
-var f=function mutliply(x,y){
-    console.log(x*y)
-}
-var mulbytwo=f.bind(this,2)
-mulbytwo(10)
+// var f=function mutliply(x,y){
+//     console.log(x*y)
+// }
+// var mulbytwo=f.bind(this,2)
+// mulbytwo(10)
  
-var f1=function multiply1(a){
-    var x=a;
-    return function mul(y){
-        console.log(x*y)
+// var f1=function multiply1(a){
+//     var x=a;
+//     return function mul(y){
+//         console.log(x*y)
+//     }
+
+// }
+// var mulbythree=f1(4)
+// mulbythree(10)
+class student{
+    static count=0;
+    constructor(name,age,phone,boardmarks){
+        this.Name=name;
+        this.Age=age;
+        this.phoneNo=phone;
+        this.Boardmarks=boardmarks;
+        this.countstudents();
+
     }
+    eligibleforcollege(){
+        if(this.Boardmarks>40){
+            return true;
+        }
+        else{
+            return false;
+        }
+    
+    }
+    countstudents(){
+        student.count++;
+        }
+        eligibleforplacements(nmarksfromcompany){
+            return (nage)=>{
+                if(this.Boardmarks>=nmarksfromcompany && this.Age>=nage){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }   
+        }
 
 }
-var mulbythree=f1(4)
-mulbythree(10)
+
+
+
+let stu1=new student("yashwanth",21,"8555008111",45)
+let stu2=new student("krishna",18,"8555008111",23)
+let stu3=new student("madhumitha",20,"8555008111",42)
+let stu4=new student("shobha",19,"8555008111",38)
+let stu5=new student("sahithi",45,"8555008111",40)
+function eligible(...n){
+    n.forEach((st)=>{
+        if(st.eligibleforplacements(40)(20)){
+            console.log(st.Name);
+        }
+    })
+}
+eligible(stu1,stu2,stu3,stu4,stu5)
