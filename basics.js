@@ -217,17 +217,33 @@
 // let myserializedobj=JSON.stringify(myobj);
 // localStorage.setItem('myobj',myserializedobj)
 // }
-var student={
-    age:20
+// var student={
+//     age:20
+// }
+// var arr=[10,30]
+// var f1=function printing(){
+//     console.log(this.age)
+// }
+// f1.call(student)
+// var f=function printing(a,b){
+//     console.log(a,this.age,b)
+// }
+// f.apply(student,arr)
+// var bound=f1.bind(student)
+// bound()
+// ------------- doing function currying using closures and bing
+var f=function mutliply(x,y){
+    console.log(x*y)
 }
-var arr=[10,30]
-var f1=function printing(){
-    console.log(this.age)
+var mulbytwo=f.bind(this,2)
+mulbytwo(10)
+ 
+var f1=function multiply1(a){
+    var x=a;
+    return function mul(y){
+        console.log(x*y)
+    }
+
 }
-f1.call(student)
-var f=function printing(a,b){
-    console.log(a,this.age,b)
-}
-f.apply(student,arr)
-var bound=f1.bind(student)
-bound()
+var mulbythree=f1(4)
+mulbythree(10)
