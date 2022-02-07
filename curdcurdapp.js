@@ -6,7 +6,7 @@ let ramu=document.querySelector('.items');
 btn.addEventListener('click',addingtocurdcurd)
 window.addEventListener('DOMContentLoaded', (event) => {
     axios
-    .get("https://crudcrud.com/api/2f4d01999b8e4c6480b7aadd471a18d4/practicedata").then((res)=>{
+    .get("https://crudcrud.com/api/37b45a1cb197453889bd823b3d28f830/practicedata").then((res)=>{
         for(let i=0;i<res.data.length;i++){
             displayyallusersfromcurdcurd(res.data[i])
         }
@@ -29,7 +29,10 @@ function displayyallusersfromcurdcurd(user){
 
 
 }
-
+function deletetheuser(user){
+    axios
+    .delete(`https://crudcrud.com/api/37b45a1cb197453889bd823b3d28f830/practicedata/${user}`)
+}
 function addingtocurdcurd(e){
     e.preventDefault()
     let name=document.getElementById('name').value;
@@ -40,19 +43,31 @@ function addingtocurdcurd(e){
         email:email,
         phone:phoneno
     }
-    console.log("entered")
-    axios
-    .post("https://crudcrud.com/api/2f4d01999b8e4c6480b7aadd471a18d4/practicedata",obj)
+   axios
+    .post("https://crudcrud.com/api/37b45a1cb197453889bd823b3d28f830/practicedata",obj)
     .then((err)=>{displayyallusersfromcurdcurd(err.data)})
 }
-let rem=document.querySelector('.items')
+let ulitems=document.querySelector('.items')
 
-rem.addEventListener('click',remo)
-function remo(e){
+ulitems.addEventListener('click',removeuser)
+function removeuser(e){
     if(e.target.className=='ibtn'){
         if(confirm('Are You Sure?')){
-            var li = e.target.parentElement;
-            rem.removeChild(li);
+            var lx = e.target.parentElement;
+            let name1=lx.firstChild.textContent;
+            axios
+            .get("https://crudcrud.com/api/37b45a1cb197453889bd823b3d28f830/practicedata").then((res)=>{
+                for(let i=0;i<res.data.length;i++){
+                    if(res.data[i].name.localeCompare(name1)==0){
+                        axios
+                    .delete(`https://crudcrud.com/api/37b45a1cb197453889bd823b3d28f830/practicedata/${res.data[i]._id}`)
+                    .then(()=>{ulitems.removeChild(lx);})
+                    .catch(err=>console.log(err))
+                    }
+                }
+            })
+            
+            
           }
     }
 }
