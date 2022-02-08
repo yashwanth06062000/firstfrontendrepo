@@ -46,32 +46,19 @@ function preorderiterative(node){
     }
     var nodeStack = [];
     nodeStack.push(root);
-     
-    /* Pop all items one by one. Do following
-    for every popped item
-    a) print it
-    b) push its right child
-    c) push its left child
-    Note that right child is pushed first so
-    that left is processed first */
     while (nodeStack.length > 0)
     {
-         
-        // Pop the top item from stack and print it
-        var mynode = nodeStack[nodeStack.length - 1];
-       console.log(mynode.data)
-        nodeStack.pop();
-         
-        // Push right and left children of
-        // the popped node to stack
-        if (mynode.right != null)
-        {
+     var mynode = nodeStack[nodeStack.length - 1];
+     console.log(mynode.data)
+     nodeStack.pop();
+     if (mynode.right != null)
+       {
             nodeStack.push(mynode.right);
-        }
-        if (mynode.left != null)
-        {
+       }
+     if (mynode.left != null)
+       {
             nodeStack.push(mynode.left);
-        }
+       }
     }
 }
 
@@ -84,7 +71,30 @@ function search(root, key)
      else{
     return search(root.right, key);}
 }
+function findmin(root){
+    if(root===null){
+        return null
+    }
+    let x=root
+    while(x.left){
+        x=x.left
+        
+    }
+    return x
 
+}
+function findmax(root){
+    if(root===null){
+        return null
+    }
+    let x=root
+    while(x.rigth){
+        x=x.right
+        
+    }
+    return x
+
+}
 
 insert(50);
 insert(30);
@@ -97,3 +107,5 @@ console.log(search(root,60),"hie")
 preorder(root)
 console.log(root.data,root.left.data,root.right.data)
 preorderiterative(root)
+console.log(findmin(root).data)
+console.log(findmax(root).data)
