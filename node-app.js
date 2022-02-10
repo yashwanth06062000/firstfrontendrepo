@@ -2,20 +2,26 @@ const http=require('http')
 const fs=require('fs')
 const sever=http.createServer((req,res)=>{
     if(req.url==='/'){
-    return fs.readFile('messagefroform.txt', 'utf8' ,(err,data)=>{
+       
+            return fs.readFile('messagefroform.txt', 'utf8' ,(err,data)=>{
+                
+                // console.log(dat[1])
         
-            res.write('<html>')
-        res.write('<body>')
-        res.write(`<h1>${data}</h1>`)
-        res.write('<form method="POST" action="/message"><input type="text" name="message"><button type="submit">send</button></form>' )
-        res.write('</body>')
-        res.write('</html>')
-        return res.end()
-            
-        
-        
+                
+                res.write('<html>')
+                res.write('<body>')
 
-    })    
+                    const dat=data.split(",")
+                for(let i=0;i<dat.length;i++){
+                res.write(`<h1>${dat[i]}</h1>`)}
+                res.write('<form method="POST" action="/message"><input type="text" name="message"><button type="submit">send</button></form>' )
+                res.write('</body>')
+                res.write('</html>')
+                
+                    
+        
+                return res.end()
+            })    
     
 
     }
