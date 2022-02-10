@@ -1,20 +1,37 @@
 const http=require('http')
+const fs=require('fs')
 const sever=http.createServer((req,res)=>{
     if(req.url==='/'){
-    res.write('<html>')
-    res.write('<body>')
-    res.write('<form method="POST" action="/message"><input type="text" name="message"><button type="submit">send</button></form>' )
-    res.write('</body>')
-    res.write('</html>')
-    return res.end()
-
-    }
-    if(req.url==='/home'){
-        res.write('<html>')
+    return fs.readFile('messagefroform.txt', 'utf8' ,(err,data)=>{
+        
+            res.write('<html>')
         res.write('<body>')
-        res.write(`<h1>welcome home</h1>`)
+        res.write(`<h1>${data}</h1>`)
+        res.write('<form method="POST" action="/message"><input type="text" name="message"><button type="submit">send</button></form>' )
         res.write('</body>')
         res.write('</html>')
+        return res.end()
+            
+        
+        
+
+    })    
+    
+
+    }
+    if(req.url==='/message' && req.method==='POST'){
+        const body=[]
+        req.on('data',(c)=>{
+            body.push(c)
+        })
+        req.on('end',()=>{
+            const pb=Buffer.concat(body).toString()
+            const out=pb.split('=')[1]
+            fs.appendFileSync('message.txt',out)
+        })
+        
+        res.statusCode=302
+        res.setHeader('Location','/')
         return res.end()
     
     }
