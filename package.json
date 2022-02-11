@@ -1,0 +1,24 @@
+{
+  "name": "nodejsbasics",
+  "version": "1.0.0",
+  "description": "this is first npm package",
+  "main": "node-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node-app.js",
+    "start-server": "node node-app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashwanth06062000/firstfrontendrepo.git"
+  },
+  "author": "yashwanth krishna busetty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashwanth06062000/firstfrontendrepo/issues"
+  },
+  "homepage": "https://github.com/yashwanth06062000/firstfrontendrepo#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
