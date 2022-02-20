@@ -1,24 +1,23 @@
 {
-  "name": "nodejsbasics",
+  "name": "nodejs-complete-guide",
   "version": "1.0.0",
-  "description": "this is first npm package",
-  "main": "node-app.js",
+  "description": "Complete Node.js Guide",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon node-app.js",
-    "start-server": "node node-app.js"
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yashwanth06062000/firstfrontendrepo.git"
-  },
-  "author": "yashwanth krishna busetty",
+  "author": "Maximilian Schwarzmüller",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yashwanth06062000/firstfrontendrepo/issues"
-  },
-  "homepage": "https://github.com/yashwanth06062000/firstfrontendrepo#readme",
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.17.3",
+    "express-handlebars": "^3.0.0",
+    "pug": "^2.0.3"
   }
 }

@@ -1,22 +1,24 @@
-const express=require('express')
-const bodyparser=require('body-parser')
-const adminroutes=require("./routes/admin.js")
-const shoproutes=require("./routes/shop.js")
-const path=require('path')
+const path = require('path');
 
-app=express()
-//doubt should be asked to yash bhaiya that how body parser work and is it okay to put in admin.js
-app.use(bodyparser.urlencoded({extended:false}))
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const errorController = require('./controllers/error');
+
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/admin',adminroutes)
-app.use(shoproutes)
 
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
 
+app.use(errorController.get404);
 
-app.use((req,res,next)=>{
-    res.status(404).sendFile(path.join(__dirname,"views","404.html"))
-})
-
-
-
-app.listen(3000)
+app.listen(3000);
