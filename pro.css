@@ -12,32 +12,22 @@ body {
     margin: 0;
     min-height: 100vh;
 }
-body.dark {
-    background-color: #1f1f1f;
-    color: white;
+
+.carousel {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    height: 500px;
+    width: 500px;
 }
 
-.toggle-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
+.image-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
 }
 
-label {
-    background-color: rebeccapurple;
-    border-radius: 30%;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.3s linear;
-}
-
-body.dark label {
-    background-color: #fff;
-}
-
-input {
-    visibility: hidden;
+img {
+    object-fit: cover;
+    height: 500px;
+    width: 500px;
 }
