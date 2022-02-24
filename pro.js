@@ -1,11 +1,5 @@
-const open = document.getElementById("open");
-const close = document.getElementById("close");
-const container = document.getElementById("container");
+const toggle = document.getElementById("toggle");
 
-open.addEventListener("click", () => {
-    container.classList.add("active");
-});
-
-close.addEventListener("click", () => {
-    container.classList.remove("active");
+toggle.addEventListener("change", (e) => {
+    document.body.classList.toggle("dark", e.target.checked);
 });
