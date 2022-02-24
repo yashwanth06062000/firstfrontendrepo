@@ -1,16 +1,18 @@
-const btn=document.getElementById("btn")
-const container = document.getElementById("container");
-btn.addEventListener("click",()=>{
-    contain()
+const text = "this is my first auto text write project";
+let index = 0;
 
-});
-function contain(){
-    const notif=document.createElement("div")
-    notif.classList.add("toast")
-    notif.innerText = "This challenge is crazy!";
-    container.appendChild(notif)
-    setTimeout(() => {
-        notif.remove();
-    }, 3000);
+function wirteText(){
+    
+    document.body.innerText=text.slice(0,index);
 
+    index++;
+
+    if(index > text.length){
+        index=0;
+    }
 }
+setInterval(wirteText,100);
+
+
+
+
