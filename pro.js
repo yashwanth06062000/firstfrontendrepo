@@ -1,18 +1,11 @@
-const text = "this is my first auto text write project";
-let index = 0;
+const open = document.getElementById("open");
+const close = document.getElementById("close");
+const container = document.getElementById("container");
 
-function wirteText(){
-    
-    document.body.innerText=text.slice(0,index);
+open.addEventListener("click", () => {
+    container.classList.add("active");
+});
 
-    index++;
-
-    if(index > text.length){
-        index=0;
-    }
-}
-setInterval(wirteText,100);
-
-
-
-
+close.addEventListener("click", () => {
+    container.classList.remove("active");
+});
