@@ -1,7 +1,16 @@
-const btn = document.getElementById("btn");
-const nav = document.getElementById("nav");
+const btn=document.getElementById("btn")
+const container = document.getElementById("container");
+btn.addEventListener("click",()=>{
+    contain()
 
-btn.addEventListener("click", () => {
-    nav.classList.toggle("active");
-    btn.classList.toggle("active");
 });
+function contain(){
+    const notif=document.createElement("div")
+    notif.classList.add("toast")
+    notif.innerText = "This challenge is crazy!";
+    container.appendChild(notif)
+    setTimeout(() => {
+        notif.remove();
+    }, 3000);
+
+}
