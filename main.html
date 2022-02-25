@@ -9,22 +9,24 @@
     <script src="./main.js" defer></script>
 </head>
 <body>
+<div id="music">
     <header>
         
             <ul>
                 <li><a href="./home.html"class="nav-li">Home</a></li>
                 <li><a href="./main.html"class="nav-li">Store</a></li>
                 <li><a href="./aboutus.html"class="nav-li">AboutUS</a></li>
-                <a href="#nothing" class="Cart">cart <span class="cart-count">0</span></a>
+               
+                <a href="#cart" class="cart-holder">cart<span class='cart-count'>0</span></a>
             </ul>
         
         <h1>The Generics</h1>
     </header>
     <h1>Music</h1>
-    <div id="music">
-    <section class="music">
+    
+    <div class="music123">
         
-        <div class="product" id="Album1">
+        <!-- <div class="product" id="Album1">
             <h3>Album1</h3>
             <div class="imagediv">
                 <img src="./img/Album 1.png" alt=" 1st album" class="prodimg">
@@ -63,13 +65,13 @@
                 <span>$<span>15.99</span></span>
                 <button class="shopaddingbutton" type="button">Add to cart</button>
             </div>
-        </div>
+         </div> -->
         
 
-    </section>
+        </div>
     <h1>Merch</h1>
     <section class="merch">
-        <div class="product" id="Tshirt">
+        <!-- <div class="product" id="Tshirt">
             <h3>Tshirt</h3>
             <div class="imagediv">
                 <img src="./img/Shirt.png" alt=" T shirt" class="prodimg">
@@ -88,7 +90,7 @@
                 <span>$<span>17.99</span></span>
                 <button class="shopaddingbutton" type="button">Add to cart</button>
             </div>
-        </div>
+        </div> --> 
     </section>
 
     <section id="cart" class="container">
@@ -110,9 +112,11 @@
             </span>
         </div>
         <button class='purchase-btn' type='button'>PURCHASE</button>
+      
     </section>
+    <button class="cart-btn-bottom"> <a href="#cart" class="cart-bottom">See The cart</a></button>
 </div> 
-    <button class="see the cart" type="button">see the cart</button>
+    
     <div id="container"></div>
     <footer>
         <span class="generics">The Generics</span>
@@ -120,6 +124,7 @@
         <a href="#spotify"><img src="./img/Spotify Logo.png" alt="spotify" class="spotify"></a>
         <a href="facebook"><img src="./img/Facebook Logo.png" alt="facebook" class="facebook"></a>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js"></script>
     
 </body>
 </html>

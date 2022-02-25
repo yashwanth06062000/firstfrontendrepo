@@ -1,11 +1,13 @@
 const container=document.getElementById('music')
+
 const cart_items = document.querySelector('#cart .cart-items');
 container.addEventListener('click',(e)=>{
     if(e.target.className=="shopaddingbutton"){
+        console.log("here")
         const id = e.target.parentNode.parentNode.id;
         const name = e.target.parentNode.parentNode.id;
         const img_src = document.querySelector(`#${id} img`).src;
-        const price = e.target.parentNode.firstElementChild.firstElementChild.innerText;
+        const price = e.target.parentNode.firstElementChild.innerText;
 
         let total_cart_price = document.querySelector('#total-value').innerText;
         if (document.querySelector(`#in-cart-${id}`)){
@@ -40,6 +42,22 @@ container.addEventListener('click',(e)=>{
         },2500)
 
     }
+    if (e.target.className=='cart-btn-bottom' || e.target.className=='cart-bottom' || e.target.className=='cart-holder'){
+        document.querySelector('#cart').style = "display:block;"
+    }
+    if (e.target.className=='cancel'){
+        document.querySelector('#cart').style = "display:none;"
+    }
+    if (e.target.className=='purchase-btn'){
+        if (parseInt(document.querySelector('.cart-count').innerText) === 0){
+            alert('You have Nothing in Cart , Add some products to purchase !');
+            return
+        }
+        alert('Thanks for the purchase')
+        cart_items.innerHTML = ""
+        document.querySelector('.cart-count').innerText = 0
+        document.querySelector('#total-value').innerText = `0`;
+    }
    
     if (e.target.className=="remove"){
         let total_cart_price = document.querySelector('#total-value').innerText;
@@ -50,3 +68,63 @@ container.addEventListener('click',(e)=>{
     }
     
 })
+window.addEventListener('DOMContentLoaded', (event) => {
+    axios
+    .get("http://localhost:3000/products").then((data)=>{
+        const products=data.data.products;
+        // console.log(products)
+        const container1=document.querySelector(".music123")
+       
+        for(let i=0;i<products.length;i++){
+            console.log(products[i].title)
+            const product = document.createElement('div');
+             product.classList.add('product');
+             product.setAttribute('id',products[i].title)
+             const head=document.createElement('h3')
+             head.innerText=`${products[i].title}`;
+             product.appendChild(head)
+             const imgdiv=document.createElement('div')
+             imgdiv.classList.add('imagediv')
+             const img=document.createElement('img')
+             img.classList.add('prodimg');
+             img.setAttribute('src',`${products[i].imageUrl}`)
+             img.setAttribute('alt',`${products[i].title}`)
+             imgdiv.appendChild(img)
+             product.appendChild(imgdiv)
+             const prodde=document.createElement('div')
+             prodde.classList.add("productdetails")
+             const pspa=document.createElement("span")
+             pspa.innerText=products[i].price;
+             prodde.appendChild(pspa)
+             const btn=document.createElement("button")
+             btn.classList.add("shopaddingbutton")
+             btn.setAttribute('type',"button")
+             btn.innerText="Add to cart"
+             prodde.appendChild(btn)
+             product.appendChild(prodde)
+             container1.appendChild(product)
+
+        }
+    }).catch(err=>console.log(err))
+});
+// ----------------------------
+// <!-- <div class="product" id="Album1">
+//             <h3>Album1</h3>
+//             <div class="imagediv">
+//                 <img src="./img/Album 1.png" alt=" 1st album" class="prodimg">
+//             </div>
+//             <div class="productdetails">
+//                 <span>$<span>12.99</span></span>
+//                 <button class="shopaddingbutton" type="button">Add to cart</button>
+//             </div>
+//         </div>
+
+
+
+
+
+
+
+
+
+
