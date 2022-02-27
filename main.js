@@ -1,9 +1,10 @@
 const container=document.getElementById('music')
 
+
 const cart_items = document.querySelector('#cart .cart-items');
 container.addEventListener('click',(e)=>{
     if(e.target.className=="shopaddingbutton"){
-        console.log("here")
+        const id1=e.target.parentNode.previousSibling.id
         const id = e.target.parentNode.parentNode.id;
         const name = e.target.parentNode.parentNode.id;
         const img_src = document.querySelector(`#${id} img`).src;
@@ -14,6 +15,13 @@ container.addEventListener('click',(e)=>{
             alert('This item is already added to the cart');
             return
         }
+      
+       let obj={
+           productID:id1
+       }
+       console.log(obj)
+        axios
+        .post('http://localhost:3000/cart',obj)
         document.querySelector('.cart-count').innerText = parseInt(document.querySelector('.cart-count').innerText)+1
         const cart_item = document.createElement('div');
         cart_item.classList.add('cart-row');
@@ -76,7 +84,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const container1=document.querySelector(".music123")
        
         for(let i=0;i<products.length;i++){
-            console.log(products[i].title)
+            console.log(products[i].id);
+            const id=products[i].id;
             const product = document.createElement('div');
              product.classList.add('product');
              product.setAttribute('id',products[i].title)
@@ -85,6 +94,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
              product.appendChild(head)
              const imgdiv=document.createElement('div')
              imgdiv.classList.add('imagediv')
+             imgdiv.setAttribute('id',id);
              const img=document.createElement('img')
              img.classList.add('prodimg');
              img.setAttribute('src',`${products[i].imageUrl}`)
@@ -107,17 +117,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     }).catch(err=>console.log(err))
 });
-// ----------------------------
-// <!-- <div class="product" id="Album1">
-//             <h3>Album1</h3>
-//             <div class="imagediv">
-//                 <img src="./img/Album 1.png" alt=" 1st album" class="prodimg">
-//             </div>
-//             <div class="productdetails">
-//                 <span>$<span>12.99</span></span>
-//                 <button class="shopaddingbutton" type="button">Add to cart</button>
-//             </div>
-//         </div>
 
 
 

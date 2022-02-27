@@ -4,11 +4,12 @@ const Cart = require('../models/cart');
 exports.getProducts = (req, res, next) => {
   Product.findAll()
     .then(products => {
-      res.render('shop/product-list', {
-        prods: products,
-        pageTitle: 'All Products',
-        path: '/products'
-      });
+      res.json({products ,success:true})
+      // res.render('shop/product-list', {
+      //   prods: products,
+      //   pageTitle: 'All Products',
+      //   path: '/products'
+      // });
     })
     .catch(err => {
       console.log(err);
@@ -26,7 +27,7 @@ exports.getProduct = (req, res, next) => {
   //     });
   //   })
   //   .catch(err => console.log(err));
-  Product.findById(prodId)
+  Product.findByPk(prodId)
     .then(product => {
       res.render('shop/product-detail', {
         product: product,
@@ -70,7 +71,10 @@ exports.getCart = (req, res, next) => {
 };
 
 exports.postCart = (req, res, next) => {
-  const prodId = req.body.productId;
+  console.log("hie i am post cart called")
+  const prodId = req.body.productID;
+  console.log(req.body.productID)
+  console.log(req.body)
   let fetchedCart;
   let newQuantity = 1;
   req.user
@@ -90,7 +94,7 @@ exports.postCart = (req, res, next) => {
         newQuantity = oldQuantity + 1;
         return product;
       }
-      return Product.findById(prodId);
+      return Product.findByPk(prodId);
     })
     .then(product => {
       return fetchedCart.addProduct(product, {
@@ -105,11 +109,21 @@ exports.postCart = (req, res, next) => {
 
 exports.postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findById(prodId, product => {
-    Cart.deleteProduct(prodId, product.price);
-    res.redirect('/cart');
-  });
+  req.user
+    .getCart()
+    .then(cart => {
+      return cart.getProducts({ where: { id: prodId } });
+    })
+    .then(products => {
+      const product = products[0];
+      return product.cartItem.destroy();
+    })
+    .then(result => {
+      res.redirect('/cart');
+    })
+    .catch(err => console.log(err));
 };
+
 
 exports.getOrders = (req, res, next) => {
   res.render('shop/orders', {
